@@ -1,0 +1,22 @@
+{
+  "gridSize": 10,
+  "maxBounces": 8,
+  "emitter": {
+    "position": [0, 0],
+    "direction": "E"
+  },
+  "target": {
+    "position": [8, 8]
+  },
+  "mirrors": [
+    { "position": [2, 0], "rotation": 1 },
+    { "position": [2, 3], "rotation": 0 },
+    { "position": [6, 3], "rotation": 1 },
+    { "position": [6, 8], "rotation": 0 }
+  ],
+  "obstacles": [
+    { "position": [4, 4] },
+    { "position": [4, 5] },
+    { "position": [5, 5] }
+  ]
+}

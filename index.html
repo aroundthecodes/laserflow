@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laser Flow</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="splash">
+      <p>Laser Flow<br />Mini game series by Saw Aye Chan<br />Version 1.0<br />All rights reserved.</p>
+    </div>
+    <div id="ui">
+      <h1>Laser Flow</h1>
+      <p id="status">Rules: Red=start, green=target, yellow diamonds=turns. Tap next box to clear path.</p>
+      <p id="scoreLine">Score: <span id="scoreValue">0</span><span id="streakWrap" hidden> | Streak: <span id="streakValue">0</span></span><span id="highScoreWrap" hidden> | High: <span id="highScoreValue">0</span></span></p>
+      <button id="resetBtn" type="button" hidden>Restart</button>
+    </div>
+    <canvas id="gameCanvas"></canvas>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

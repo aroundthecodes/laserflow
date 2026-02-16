@@ -1,0 +1,139 @@
+:root {
+  --bg-1: #101820;
+  --bg-2: #0b2b34;
+  --panel: rgba(10, 12, 18, 0.84);
+  --line: #4ab9d0;
+  --text: #edf5f7;
+  --accent: #ffdd57;
+  --ok: #7ef29a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  color: var(--text);
+  background: #173642;
+}
+
+#gameCanvas {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  display: block;
+  flex: 1 1 auto;
+}
+
+#ui {
+  position: fixed;
+  left: 50%;
+  top: 12px;
+  transform: translateX(-50%);
+  z-index: 2;
+  text-align: center;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  min-width: 260px;
+  backdrop-filter: blur(4px);
+}
+
+#ui h1 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+#status {
+  margin: 0 0 8px;
+  font-size: 0.93rem;
+}
+
+#scoreLine {
+  margin: 0 0 10px;
+  font-size: 0.82rem;
+  opacity: 0.92;
+}
+
+#status.success {
+  color: var(--ok);
+  font-weight: 600;
+}
+
+#status.error {
+  color: #ff6b6b;
+  font-weight: 700;
+}
+
+#resetBtn {
+  border: 1px solid #2f8ca1;
+  background: linear-gradient(180deg, #25596a, #1b3f4b);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 7px 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#resetBtn:hover {
+  border-color: #54d6f4;
+}
+
+#splash {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  background: #173642;
+  color: var(--text);
+  transition: opacity 0.45s ease;
+}
+
+#splash p {
+  margin: 0;
+  line-height: 1.65;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+#splash.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+@media (orientation: landscape) and (max-height: 700px) {
+  body {
+    display: flex;
+    align-items: stretch;
+  }
+
+  #ui {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    margin: 12px 0 12px 12px;
+    width: 320px;
+    max-width: 40vw;
+    min-width: 260px;
+    align-self: flex-start;
+  }
+
+  #gameCanvas {
+    width: calc(100vw - 344px);
+    height: 100vh;
+    height: 100dvh;
+  }
+}
