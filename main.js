@@ -11,6 +11,7 @@ const WIN_STREAK_BONUS_STEP = 50;
 const canvas = document.getElementById("gameCanvas");
 const statusEl = document.getElementById("status");
 const resetBtn = document.getElementById("resetBtn");
+const scoreLineEl = document.getElementById("scoreLine");
 const scoreEl = document.getElementById("scoreValue");
 const streakWrapEl = document.getElementById("streakWrap");
 const highScoreWrapEl = document.getElementById("highScoreWrap");
@@ -846,6 +847,10 @@ function saveScoreState() {
 }
 
 function updateScoreUi() {
+  if (scoreLineEl) {
+    scoreLineEl.hidden = gameState.awaitingRestart && !gameState.won;
+  }
+
   if (scoreEl) {
     scoreEl.textContent = String(scoreState.score);
   }
@@ -911,13 +916,27 @@ function updateCameraView(gridSize) {
   const width = Math.max(canvas.clientWidth || window.innerWidth, 1);
   const height = Math.max(canvas.clientHeight || window.innerHeight, 1);
   const aspect = width / height;
-  const baseHalf = gridSize / 2 + 1.2;
+  const isLandscape = width > height;
+  let landscapeScale = 1;
+  let landscapeDownOffset = 0;
+
+  if (isLandscape && width >= 768) {
+    landscapeScale = 1.25;
+    landscapeDownOffset = 0.38;
+  }
+
+  if (isLandscape && width >= 1200) {
+    landscapeScale = 1.35;
+    landscapeDownOffset = 0.5;
+  }
+
+  const baseHalf = (gridSize / 2 + 1.2) * landscapeScale;
   const half = baseHalf / Math.min(1, aspect);
 
   camera.left = -half * aspect;
   camera.right = half * aspect;
-  camera.top = half;
-  camera.bottom = -half;
+  camera.top = half + landscapeDownOffset;
+  camera.bottom = -half + landscapeDownOffset;
   camera.position.set(0, gridSize * 2.2, 0);
   camera.up.set(0, 0, -1);
   camera.lookAt(0, 0, 0);
